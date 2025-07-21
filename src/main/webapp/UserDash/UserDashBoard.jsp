@@ -263,7 +263,7 @@
 <footer class="text-center mt-5 mb-3">
     <hr>
     💡 Crafted with <span style="color: #a020f0;">❤</span> and late-night <span style="color:#ffffff;">coding caffeine</span><br>
-    👩‍💻 By <strong>Anu</strong> & <strong>Tanu</strong> – Making bugs cry since 2024 😎
+    👩‍💻 By <strong>Anu</strong> 
 </footer>
 
 <!-- Bootstrap JS -->
