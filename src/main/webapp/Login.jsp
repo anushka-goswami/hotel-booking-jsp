@@ -16,12 +16,10 @@
     body {
         font-family: 'Nunito', sans-serif;
         background: linear-gradient(to right, #6a11cb, #2575fc);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding-top: 90px; /* to account for navbar + message */
         position: relative;
-        overflow: hidden;
     }
 
     .bubble {
@@ -60,6 +58,7 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         width: 100%;
         max-width: 420px;
+        margin: 30px auto;
         z-index: 1;
         animation: fadeInUp 1s ease-out forwards;
         transform: translateY(30px);
@@ -115,39 +114,84 @@
     }
 
     .animated-message {
-        position: absolute;
-        top: 30px;
         color: white;
         font-size: 1.5rem;
         font-weight: 700;
         animation: slideDownFade 1.2s ease-out;
         text-align: center;
-        width: 100%;
-        z-index: 2;
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        margin-bottom: 10px;
     }
 
     @keyframes slideDownFade {
-        0% {
-            transform: translateY(-20px);
-            opacity: 0;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        0% { transform: translateY(-20px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+        font-weight: bold;
+        color: #6a11cb !important;
+    }
+
+    .nav-link {
+        color: #333 !important;
+        font-weight: 600;
+    }
+
+    .nav-link:hover {
+        color: #6a11cb !important;
     }
 </style>
 </head>
 
 <body>
 
-<!-- Floating bubbles for design -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">InnoStay</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="UserDash/about.jsp">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.jsp">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ContactUs.jsp">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="help.jsp">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Admin/AdminLogin.jsp">Admin Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Floating bubbles -->
 <div class="bubble"></div>
 <div class="bubble"></div>
 
-<!-- Animated top message -->
-<div class="animated-message">Welcome Back to InnoStay 💜</div>
+<!-- Welcome Message Below Navbar -->
+<div class="container mt-4">
+    <div class="animated-message">Welcome Back to InnoStay 💜</div>
+</div>
 
 <!-- Login Card -->
 <div class="login-card">
@@ -168,11 +212,7 @@
     </form>
 
     <div class="register-link">
-        Not registered yet? <a href="Registration.jsp">Click here</a> 
-        
-        
-    
-        
+        Not registered yet? <a href="index.jsp">Click here</a>
     </div>
 </div>
 

@@ -1,26 +1,43 @@
 package com.net.model;
 
 public class Booking {
-    private int roomId; // 🔥 Add this line
+    private int id;
+    private int roomId;
     private String username;
-    private String roomType;
     private String checkin;
     private String checkout;
-    private int guests;
-    private double amount;
+    private int adults;
+    private int children;
+    private String paymentMethod;
+    private String status;
 
-    // 🔧 Constructor with roomId
-    public Booking(int roomId, String username, String roomType, String checkin, String checkout, int guests, double amount) {
+    // ✅ Full Constructor
+    public Booking(int id, int roomId, String username, String checkin, String checkout,
+                   int adults, int children, String paymentMethod, String status) {
+        this.id = id;
         this.roomId = roomId;
         this.username = username;
-        this.roomType = roomType;
         this.checkin = checkin;
         this.checkout = checkout;
-        this.guests = guests;
-        this.amount = amount;
+        this.adults = adults;
+        this.children = children;
+        this.paymentMethod = paymentMethod;
+        this.status = status;
     }
 
-    // 🔧 Getter and Setter for roomId
+    // ✅ Empty Constructor
+    public Booking() {}
+
+    // 🔽 Getters & Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getRoomId() {
         return roomId;
     }
@@ -29,21 +46,12 @@ public class Booking {
         this.roomId = roomId;
     }
 
-    // 👇 Baaki sab same (getters/setters for username, roomType etc.)
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
     }
 
     public String getCheckin() {
@@ -62,19 +70,35 @@ public class Booking {
         this.checkout = checkout;
     }
 
-    public int getGuests() {
-        return guests;
+    public int getAdults() {
+        return adults;
     }
 
-    public void setGuests(int guests) {
-        this.guests = guests;
+    public void setAdults(int adults) {
+        this.adults = adults;
     }
 
-    public double getAmount() {
-        return amount;
+    public int getChildren() {
+        return children;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setChildren(int children) {
+        this.children = children;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

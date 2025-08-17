@@ -21,11 +21,11 @@
         boolean added = RoomAdminDAO.addRoom(room);
         if (added) {
 %>
-            <div class="alert alert-success mt-3">Room added successfully!</div>
+            <div class="alert alert-success text-center mt-3">Room added successfully!</div>
 <%
         } else {
 %>
-            <div class="alert alert-danger mt-3">Failed to add room.</div>
+            <div class="alert alert-danger text-center mt-3">Failed to add room.</div>
 <%
         }
     }
@@ -34,25 +34,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Room</title>
+    <meta charset="UTF-8">
+    <title>Add Room - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             background: linear-gradient(135deg, #5e35b1, #7e57c2);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
-            min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .form-container {
             background-color: #1c1c2b;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0px 0px 25px rgba(98, 0, 234, 0.4);
+            box-shadow: 0 0 25px rgba(98, 0, 234, 0.4);
             max-width: 600px;
-            margin: 80px auto;
+            margin: 100px auto;
             position: relative;
             z-index: 10;
         }
@@ -61,18 +63,19 @@
             color: #d1c4e9;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        input, textarea, select {
-            background-color: #2a2a3d;
-            border: 1px solid #4a148c;
-            color: #fff;
-        }
+     input, textarea, select {
+    background-color: #2a2a3d !important;
+    border: 1px solid #4a148c;
+    color: #fff;
+}
 
-        input::placeholder, textarea::placeholder {
-            color: #bdbdbd;
-        }
+input::placeholder, textarea::placeholder {
+    color: #e0e0e0; /* Updated to lighter color */
+}
+
 
         .btn-primary {
             background-color: #7e57c2;
@@ -92,68 +95,85 @@
             background-color: #7e57c2;
         }
 
-        /* Abstract Shapes */
-        .abstract-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
+        /* Navbar styling */
+        .navbar-brand {
+            font-weight: bold;
+            color: #6f42c1;
         }
 
-        .shape {
+        .nav-link {
+            color: #6f42c1 !important;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #9b59b6 !important;
+        }
+
+        .nav-animate::after {
+            content: "";
             position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            animation: float 20s ease-in-out infinite;
-            mix-blend-mode: overlay;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #9b59b6;
+            transition: width 0.3s ease-in-out;
         }
 
-        .shape.polygon {
-            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-            border-radius: 0;
+        .nav-animate:hover::after {
+            width: 100%;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0.4;
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
             }
             50% {
-                transform: translateY(-50px) rotate(180deg);
-                opacity: 0.2;
+                transform: scale(1.2);
             }
-            100% {
-                transform: translateY(0px) rotate(360deg);
-                opacity: 0.4;
-            }
-        }
-
-        /* Logout Button */
-        .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            z-index: 20;
         }
     </style>
 </head>
 <body>
 
-<!-- Abstract Background Shapes -->
-<div class="abstract-shapes">
-    <div class="shape" style="width: 150px; height: 150px; top: 10%; left: 20%; animation-delay: 0s;"></div>
-    <div class="shape polygon" style="width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 2s;"></div>
-    <div class="shape" style="width: 100px; height: 100px; top: 60%; left: 10%; animation-delay: 4s;"></div>
-    <div class="shape polygon" style="width: 80px; height: 80px; top: 80%; left: 50%; animation-delay: 6s;"></div>
-</div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="#">
+            InnoStay <span style="animation: beat 1s infinite;">💜</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+            aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="adminNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../UserDash/UserDashBoard.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../UserDash/about.jsp">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../ContactUs.jsp">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../help.jsp">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="AdminDashboard.jsp">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger nav-animate fw-bold" href="addroom.jsp?logout=true">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<!-- Logout Button -->
-<a href="addRoom.jsp?logout=true" class="btn btn-light logout-btn">Logout</a>
-
-<!-- Form Container -->
+<!-- Add Room Form -->
 <div class="form-container">
     <h2>Add Room</h2>
     <form method="post">
@@ -169,7 +189,7 @@
         </select>
 
         <input type="number" name="price" placeholder="Price" step="0.01" class="form-control mb-3" required>
-        <input type="file" name="imageUrl" placeholder="Image name (e.g. suite1.jpg)" class="form-control mb-3" required>
+        <input type="text" name="imageUrl" placeholder="Image file name (e.g. suite1.jpg)" class="form-control mb-3" required>
 
         <div class="d-flex justify-content-between">
             <button type="submit" name="addRoom" class="btn btn-primary">Add Room</button>
@@ -177,6 +197,9 @@
         </div>
     </form>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

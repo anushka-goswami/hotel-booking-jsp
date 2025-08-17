@@ -9,19 +9,16 @@
             background: linear-gradient(135deg, #d3cce3, #e9e4f0);
             font-family: 'Segoe UI', sans-serif;
             animation: fadeIn 1.5s ease-in-out;
-            position: relative;
             overflow-x: hidden;
             color: #4b0082;
+            padding-top: 80px; /* Prevent content from hiding behind navbar */
         }
 
         .container {
-            margin-top: 50px;
             padding: 30px;
             border-radius: 20px;
             background-color: #ffffffde;
             box-shadow: 0px 8px 25px rgba(75, 0, 130, 0.15);
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes fadeIn {
@@ -35,6 +32,7 @@
             border-radius: 20px;
             overflow: hidden;
             background: #fdf5ff;
+            height: 100%;
         }
 
         .room-card:hover {
@@ -45,6 +43,7 @@
         .room-img {
             height: 200px;
             object-fit: cover;
+            width: 100%;
         }
 
         .room-title {
@@ -103,14 +102,42 @@
             color: #6a0dad;
             text-decoration: underline;
         }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="UserDashBoard.jsp">InnoStay</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link fw-semibold" href="UserDashBoard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold active" href="about.jsp">About</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold text-danger" href="../Logout.jsp">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="../ContactUs.jsp">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="../help.jsp">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <!-- Sparkle Background -->
 <div class="sparkle-background"></div>
 
-<div class="container text-center">
+<!-- Main Content -->
+<div class="container text-center mt-5">
     <h1>Welcome to InnoStay <span class="heart">💜</span></h1>
     <p class="lead mt-4">Your one-stop destination for an unforgettable hotel experience!</p>
     <p><strong>Phone:</strong> +91 99999-88888</p>
@@ -120,12 +147,12 @@
 </div>
 
 <!-- Room Showcase -->
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <h2 class="text-center mb-4">🏡 Our Rooms</h2>
     <div class="row g-4">
 
-        <div class="col-md-4">
-            <div class="card room-card">
+        <div class="col-md-4 d-flex">
+            <div class="card room-card w-100">
                 <img src="../images/rooms/deluxroom1.jpeg" class="card-img-top room-img" alt="Deluxe Room">
                 <div class="card-body">
                     <h5 class="room-title">Deluxe Room</h5>
@@ -134,8 +161,8 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card room-card">
+        <div class="col-md-4 d-flex">
+            <div class="card room-card w-100">
                 <img src="../images/rooms/suite1.jpeg" class="card-img-top room-img" alt="Family Suite">
                 <div class="card-body">
                     <h5 class="room-title">Family Suite</h5>
@@ -144,8 +171,8 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card room-card">
+        <div class="col-md-4 d-flex">
+            <div class="card room-card w-100">
                 <img src="../images/rooms/single1.jpeg" class="card-img-top room-img" alt="Budget Room">
                 <div class="card-body">
                     <h5 class="room-title">Budget Room</h5>
@@ -160,5 +187,6 @@
 <!-- Floating Emoji -->
 <div class="floating-emoji">🛎️</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

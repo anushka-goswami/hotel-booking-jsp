@@ -183,12 +183,19 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link active" href="UserDashBoard.jsp">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.jsp">About</a></li>
+           <li class="nav-item">
+                    <a class="nav-link" href="../ContactUs.jsp"> Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../help.jsp"> Help</a>
+                </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="../Admin/AdminLogin.jsp">Admin Login</a></li>
 
-            <li><a class="dropdown-item" href="#">View Participants</a></li>
+            <li><a href="<%= request.getContextPath() %>/UserDash/UserProfile.jsp">User Profile</a>
+</li>
             <li><a class="dropdown-item" href="#">Other</a></li>
           </ul>
         </li>
@@ -243,7 +250,7 @@
                       <option value="">-- Select Room Type --</option>
                       <option value="Deluxe Room">Deluxe Room</option>
                       <option value="Single Room">Single Room</option>
-                      <option value="Multiple Room">Twin BedRoom</option>
+                      <option value="Multiple Room">Twin Room</option>
                       <option value="Suite">Suite</option>
                   </select>
               </div>

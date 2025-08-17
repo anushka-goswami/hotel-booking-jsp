@@ -11,7 +11,7 @@
 
         if (isValid) {
             session.setAttribute("admin", username);
-            response.sendRedirect("addRoom.jsp"); // Redirect to addRoom.jsp
+            response.sendRedirect("AdminDashboard.jsp"); // Redirect to addRoom.jsp
         } else {
             request.setAttribute("error", "Invalid Username or Password!");
         }
@@ -97,9 +97,71 @@
                 opacity: 0;
             }
         }
+          .navbar-custom {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar-custom .navbar-brand {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .navbar-custom .nav-link {
+        color: #ffffff;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: #ffccff;
+        text-decoration: underline;
+    }
+
+    .navbar-toggler {
+        border: none;
+        color: white;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">InnoStay 💜</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white">☰</span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../UserDash/UserDashBoard.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../UserDash/about.jsp">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../ContactUs.jsp">Contact-Us </a>
+                </li>
+                     <li class="nav-item">
+                    <a class="nav-link" href="../help.jsp">Help</a>
+                </li>
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="../Logout.jsp">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <!-- Animated Background -->
     <div class="bg-animation">

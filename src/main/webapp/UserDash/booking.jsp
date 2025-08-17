@@ -61,7 +61,7 @@
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
+            margin-top: 100px;
             transition: all 0.3s ease;
         }
 
@@ -112,22 +112,50 @@
 </head>
 <body>
 
-<!-- Animated background layer -->
+<!-- ✅ Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="UserDashBoard.jsp">InnoStay</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="UserDashBoard.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="about.jsp">About</a>
+                </li>
+              
+                 <li class="nav-item">
+                    <a class="nav-link" href="../ContactUs.jsp">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../help.jsp">Help</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-semibold text-danger" href="../Logout.jsp">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Animated background -->
 <div id="particles-js"></div>
 
-<!-- Booking Container -->
+<!-- Booking Box -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 booking-box">
             <h3 class="mb-4 text-center animate__animated animate__fadeInDown">Book Room: <%= room.getTitle() %></h3>
 
             <div class="row g-4 mb-4">
-                <!-- Room Image -->
                 <div class="col-md-6">
                     <img src='<%= room.getImageUrl() %>' class="img-fluid room-img" alt="Room Image">
                 </div>
-
-                <!-- Room Info -->
                 <div class="col-md-6 card-info">
                     <p><strong>Room ID:</strong> <%= room.getId() %></p>
                     <p><strong>Description:</strong> <%= room.getDescription() %></p>
@@ -136,9 +164,9 @@
                 </div>
             </div>
 
-            <!-- Booking Form -->
             <form action="bookRoom.jsp" method="post">
                 <input type="hidden" name="roomId" value="<%= room.getId() %>">
+                    <input type="hidden" name="username" value="<%= session.getAttribute("uname") %>" />
 
                 <div class="row g-3">
                     <div class="col-md-6">
@@ -168,7 +196,7 @@
                             <option value="UPI">UPI</option>
                             <option value="Card">Card</option>
                             <option value="Netbanking">Net Banking</option>
-                             <option value="other">Other</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                 </div>
@@ -223,37 +251,17 @@
 
         let errorMsg = '';
 
-        // Validate check-in date
-        if (checkin < minDate) {
-            errorMsg += 'Check-in date must be after 2015.\n';
-        }
+        if (checkin < minDate) errorMsg += 'Check-in date must be after Jan 2025.\n';
+        if (checkout <= checkin) errorMsg += 'Check-out date must be after check-in date.\n';
+        if (checkout > maxDate) errorMsg += 'Check-out date must not be beyond Dec 2026.\n';
+        if (adults > 2) errorMsg += 'Maximum of 2 adults allowed.\n';
+        if (children > 2) errorMsg += 'Maximum of 2 children allowed.\n';
 
-        // Validate checkout date
-        if (checkout <= checkin) {
-            errorMsg += 'Check-out date must be after check-in date.\n';
-        }
-
-        if (checkout > maxDate) {
-            errorMsg += 'Check-out date must not be beyond the year 2106.\n';
-        }
-
-        // Adults and children limit
-        if (adults > 2) {
-            errorMsg += 'Maximum of 2 adults allowed.\n';
-        }
-
-        if (children > 2) {
-            errorMsg += 'Maximum of 2 children allowed.\n';
-        }
-
-        // If there's an error, stop form submission
         if (errorMsg) {
             alert(errorMsg);
             e.preventDefault();
         }
     });
-
-
 </script>
 
 </body>

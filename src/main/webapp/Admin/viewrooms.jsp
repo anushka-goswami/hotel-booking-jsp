@@ -74,14 +74,80 @@
             color: #6a1b9a;
             font-weight: 500;
         }
+        .nav-link {
+    color: #6f42c1 !important;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #9b59b6 !important;
+}
+
+.nav-animate::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #9b59b6;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-animate:hover::after {
+    width: 100%;
+}
+
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+        
     </style>
 </head>
 <body class="container mt-5">
+   <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: white;">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold text-purple-emphasis" style="color: #6f42c1; font-size: 1.6rem;" href="#">
+            InnoStay <span style="animation: beat 1s infinite;">💜</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../index.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../UserDash/about.jsp">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../ContactUs.jsp">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="../help.jsp">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-animate" href="AdminDashboard.jsp">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger nav-animate fw-bold" href="AdminLogin.jsp">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <!-- Logout Button -->
-    <div class="logout-btn">
-        <a href="AdminLogin.jsp" class="btn btn-danger">Logout</a>
-    </div>
+    
 
     <h2 class="mb-5">All Room Listings (Admin Panel)</h2>
 
